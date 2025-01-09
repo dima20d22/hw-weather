@@ -4,14 +4,48 @@
 		<meta charset="UTF-8" />
 		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>API</title>
-		<link rel="stylesheet" href="./src/style.css" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Raleway:ital@0;1&display=swap"
+			rel="stylesheet"
+		/>
+
+		<link rel="stylesheet" href="./css/main.css" />
+		<title>Weather</title>
 	</head>
 	<body>
-		<form class="form">
-			<input class="input" type="text" placeholder="Text your City" />
-			<button class="btn__submit" type="submit">Search</button>
-		</form>
+		<header сlass="header">
+			<div class="container container--header">
+				<!-- <img class="logo" src="./src/img/logo.svg" alt="logo" /> -->
+				<h1 class="header__logo">Weather in</h1>
+				<p class="header__city">Your City</p>
+				<form class="header__form">
+					<input
+						class="header__form__input"
+						type="text"
+						placeholder="Text your City"
+					/>
+					<button class="header__form__btn-submit" type="submit">Search</button>
+				</form>
+			</div>
+		</header>
+		<nav>
+			<ul class="nav">
+				<li class="nav__item">
+					<a class="nav__link" href="#">Today</a>
+				</li>
+				<li class="nav__item">
+					<a class="nav__link" href="#">Tomorrow</a>
+				</li>
+				<li class="nav__item">
+					<a class="nav__link" href="#">Week</a>
+				</li>
+				<li class="nav__item">
+					<a class="nav__link" href="#">Month</a>
+				</li>
+			</ul>
+		</nav>
 		<!-- <span class="loader is-hidden"></span> -->
 		<ul class="box"></ul>
 		<script type="module" src="/src/main.js"></script>
