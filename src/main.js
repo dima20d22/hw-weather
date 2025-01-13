@@ -1,7 +1,7 @@
 import { getWeather } from './js/API.js'
 import 'izitoast/dist/css/iziToast.min.css'
-import iziToast from 'izitoast'
 import { tryAndCatch } from './js/tryAndCatch.js'
+import iziToast from 'izitoast'
 // import { box } from './js/render.js'
 
 const form = document.querySelector('.header__form')
