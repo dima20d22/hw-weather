@@ -1,13 +1,7 @@
-* {
-  font-family: var(--main-font);
+body {
+  background-color: #e4eaf2;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  background-color: #080808;
-  margin: 0;
 }
 body.no-scroll {
   overflow: hidden;
@@ -39,7 +33,36 @@ a {
   text-decoration: none;
 }
 
+header {
+  background-color: #1f1f1f;
+}
+
+.header__logo-icon {
+  fill: black;
+}
+
+.header__logo {
+  font-family: --main-font;
+  font-size: 40px;
+  color: white;
+}
+
+.header__city {
+  font-size: 28px;
+  color: white;
+}
+
+.nav__list {
+  display: flex;
+  justify-content: space-around;
+}
+
 .container {
   max-width: 960px;
   margin: 0 auto;
+}
+
+.container--header {
+  display: flex;
+  padding: 20px 20px;
 }/*# sourceMappingURL=main.css.map */

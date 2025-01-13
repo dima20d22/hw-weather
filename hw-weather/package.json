@@ -6,11 +6,17 @@
 	"scripts": {
 		"dev": "vite",
 		"build": "vite build",
+		"deploy": "gh-pages -d dist",
 		"preview": "vite preview",
 		"build:sass": "sass src/scss:src/css --no-source-map"
 	},
 	"devDependencies": {
+		"gh-pages": "^6.3.0",
 		"sass": "^1.83.1",
 		"vite": "^6.0.5"
+	},
+	"dependencies": {
+		"axios": "^1.7.9",
+		"izitoast": "^1.4.0"
 	}
 }

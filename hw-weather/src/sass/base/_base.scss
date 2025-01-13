@@ -1,14 +1,14 @@
-* {
-	font-family: var(--main-font);
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
-}
+// * {
+// 	font-family: var(--main-font);
+// 	margin: 0;
+// 	padding: 0;
+// 	box-sizing: border-box;
+// }
 
 body {
-	background-color: #080808;
+	background-color: #e4eaf2;
 	margin: 0;
-
+	padding: 0;
 	&.no-scroll {
 		overflow: hidden;
 	}

@@ -10,14 +10,18 @@
 			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Raleway:ital@0;1&display=swap"
 			rel="stylesheet"
 		/>
-
-		<link rel="stylesheet" href="./css/main.css" />
+		<link rel="stylesheet" href="./src/sprite.svg/logos.svg" />
+		<link rel="stylesheet" href="./css/main.min.css" />
 		<title>Weather</title>
 	</head>
 	<body>
 		<header сlass="header">
 			<div class="container container--header">
-				<!-- <img class="logo" src="./src/img/logo.svg" alt="logo" /> -->
+				<!-- <a class="header__logo-link" href="">
+					<svg class="header__logo-icon">
+						<use href=".src/sprite.svg/logos.svg#sun--svg"></use>
+					</svg>
+				</a> -->
 				<h1 class="header__logo">Weather in</h1>
 				<p class="header__city">Your City</p>
 				<form class="header__form">
@@ -30,24 +34,32 @@
 				</form>
 			</div>
 		</header>
-		<nav>
-			<ul class="nav">
-				<li class="nav__item">
-					<a class="nav__link" href="#">Today</a>
-				</li>
-				<li class="nav__item">
-					<a class="nav__link" href="#">Tomorrow</a>
-				</li>
-				<li class="nav__item">
-					<a class="nav__link" href="#">Week</a>
-				</li>
-				<li class="nav__item">
-					<a class="nav__link" href="#">Month</a>
-				</li>
-			</ul>
-		</nav>
-		<!-- <span class="loader is-hidden"></span> -->
-		<ul class="box"></ul>
+		<main>
+			<div class="container container--nav">
+				<nav class="nav">
+					<ul class="nav__list">
+						<li class="nav__item">
+							<a class="nav__link" href="#">Today</a>
+						</li>
+						<li class="nav__item">
+							<a class="nav__link" href="#">Tomorrow</a>
+						</li>
+						<li class="nav__item">
+							<a class="nav__link" href="#">Week</a>
+						</li>
+						<li class="nav__item">
+							<a class="nav__link" href="#">Month</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<section class="content">
+				<div class="container container--content">
+					<ul class="box"></ul>
+				</div>
+			</section>
+		</main>
+
 		<script type="module" src="/src/main.js"></script>
 	</body>
 </html>

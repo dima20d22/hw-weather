@@ -13,6 +13,11 @@ export default defineConfig(({ command }) => {
 			include: ['axios'],
 		},
 		root: 'src',
+		server: {
+			watch: {
+				usePolling: true,
+			},
+		},
 		build: {
 			sourcemap: true,
 			rollupOptions: {
