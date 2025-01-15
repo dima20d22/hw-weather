@@ -18,6 +18,7 @@ export default defineConfig(({ command }) => {
 				usePolling: true,
 			},
 		},
+		base: 'hw-weather',
 		build: {
 			sourcemap: true,
 			rollupOptions: {
