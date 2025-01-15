@@ -1,4 +1,18 @@
+.nav {
+	padding: 5px;
+}
+
 .nav__list {
 	display: flex;
 	justify-content: space-around;
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+}
+
+.nav__item {
+	&:hover {
+		transform: scale(1.05);
+		color: #007bff;
+	}
 }

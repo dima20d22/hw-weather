@@ -6,7 +6,12 @@ export async function tryAndCatch(inputValue) {
 		const response = await getWeather(inputValue)
 
 		if (response.status !== 200) {
-			throw new Error('City not found')
+			iziToast.error({
+				title: 'Error',
+				message: 'City not found',
+				position: 'topRight',
+			})
+			return
 		}
 		renderCards([response.data.current])
 	} catch (error) {
