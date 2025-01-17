@@ -13,7 +13,8 @@ export async function tryAndCatch(inputValue) {
 			})
 			return
 		}
-		renderCards([response.data.current])
+
+		return response.data.current
 	} catch (error) {
 		console.error(error)
 	}

@@ -2,8 +2,14 @@ header {
 	background-color: #1f1f1f;
 }
 
+.header__svg-wrapper {
+	width: 40px;
+	height: 40px;
+}
+
 .header__logo-icon {
-	fill: black;
+	width: 40px;
+	height: 40px;
 }
 
 .header__logo {
@@ -30,17 +36,34 @@ header {
 }
 
 .header__form {
-	display: inline-block;
+	display: flex;
 	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+}
+
+.header__form__input-wrapper {
+	display: block;
+	position: relative;
 }
 
 .header__form__input {
+	padding-left: 16px;
 	font-size: 16px;
+	margin: 0;
+	padding: 5px 5px 5px 25px;
+	outline: none;
+	border: 2px solid var(--main-color);
+	border-radius: 10px;
+	transition: all 0.3s ease;
+}
+.form__input-icon {
+	left: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	position: absolute;
+	width: 14px;
+	height: 14px;
 }
 
-.header__form__input,
 .header__form__btn-submit {
 	margin: 0;
 	padding: 5px;

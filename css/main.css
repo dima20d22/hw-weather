@@ -42,8 +42,14 @@ header {
   background-color: #1f1f1f;
 }
 
+.header__svg-wrapper {
+  width: 40px;
+  height: 40px;
+}
+
 .header__logo-icon {
-  fill: black;
+  width: 40px;
+  height: 40px;
 }
 
 .header__logo {
@@ -70,17 +76,35 @@ header {
 }
 
 .header__form {
-  display: inline-block;
+  display: flex;
   box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+}
+
+.header__form__input-wrapper {
+  display: block;
+  position: relative;
 }
 
 .header__form__input {
+  padding-left: 16px;
   font-size: 16px;
+  margin: 0;
+  padding: 5px 5px 5px 25px;
+  outline: none;
+  border: 2px solid var(--main-color);
+  border-radius: 10px;
+  transition: all 0.3s ease;
 }
 
-.header__form__input,
+.form__input-icon {
+  left: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  position: absolute;
+  width: 14px;
+  height: 14px;
+}
+
 .header__form__btn-submit {
   margin: 0;
   padding: 5px;
@@ -129,6 +153,33 @@ header {
   border-radius: 10px;
   padding: 15px;
   list-style-type: none;
+}
+
+.cards__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cards__title__button--delete {
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.cards__title__icon {
+  width: 12px;
+  height: 12px;
+  transition: transform 0.3s, color 0.3s;
+  fill: red;
+}
+
+.cards__title__button--delete:hover .cards__title__icon {
+  transform: scale(1.2);
 }
 
 .content-wrapper {

@@ -10,27 +10,31 @@
 			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Raleway:ital@0;1&display=swap"
 			rel="stylesheet"
 		/>
-		<link rel="stylesheet" href="./src/sprite.svg/logos.svg" />
 		<link rel="stylesheet" href="./css/main.min.css" />
 		<title>Weather</title>
 	</head>
 	<body>
 		<header сlass="header">
 			<div class="container container--header">
-				<!-- <a class="header__logo-link" href="">
+				<div id="svg-container" class="header__svg-wrapper">
 					<svg class="header__logo-icon">
-						<use href=".src/sprite.svg/logos.svg#sun--svg"></use>
+						<use href="./src/sprite.svg/logos.svg#moon--svg"></use>
 					</svg>
-				</a> -->
-				<h1 class="header__logo">Weather in</h1>
-				<p class="header__city">Your City</p>
+				</div>
+				<h1 class="header__logo">Weather</h1>
 				<div class="header__form-wrapper">
 					<form class="header__form">
-						<input
-							class="header__form__input"
-							type="text"
-							placeholder="Text your City"
-						/>
+						<span class="header__form__input-wrapper">
+							<input
+								class="header__form__input"
+								type="text"
+								placeholder="Text your City"
+							/>
+							<svg class="form__input-icon">
+								<use href="./src/sprite.svg/logos.svg#zoom--svg"></use>
+							</svg>
+						</span>
+
 						<button class="header__form__btn-submit" type="submit">
 							Search
 						</button>
@@ -50,9 +54,6 @@
 						</li>
 						<li class="nav__item">
 							<a class="nav__link" href="#">Week</a>
-						</li>
-						<li class="nav__item">
-							<a class="nav__link" href="#">Month</a>
 						</li>
 					</ul>
 				</nav>

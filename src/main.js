@@ -1,20 +1,23 @@
 import 'izitoast/dist/css/iziToast.min.css'
 import { tryAndCatch } from './js/tryAndCatch.js'
 import iziToast from 'izitoast'
-// import { box } from './js/render.js'
+import {
+	addWeatherCards,
+	deleteCards,
+	savedWeatherData,
+} from './js/localStorage.js'
+import { renderCards } from './js/render.js'
 
 const form = document.querySelector('.header__form')
 const input = document.querySelector('.header__form__input')
-const buttonMoreDetails = document.querySelector('.cards__button')
-const cardsAdditionally = document.querySelector(
-	'.cards__additionally[type=button]'
-)
-let headerCity = document.querySelector('.header__city')
+
+document.addEventListener('DOMContentLoaded', () => {
+	renderCards(savedWeatherData)
+})
 
 form.addEventListener('submit', async e => {
 	e.preventDefault()
 	let inputValue = input.value.trim()
-	headerCity.innerHTML = inputValue
 	if (inputValue === '') {
 		iziToast.error({
 			title: 'Error',
@@ -24,8 +27,11 @@ form.addEventListener('submit', async e => {
 		return
 	}
 
-	await tryAndCatch(inputValue)
-	input.value = ''
+	const weatherData = await tryAndCatch(inputValue)
+	if (weatherData) {
+		addWeatherCards(weatherData)
+		input.value = ''
+	}
 })
 
 document.addEventListener('click', e => {
@@ -39,5 +45,12 @@ document.addEventListener('click', e => {
 		} else {
 			document.querySelector('.cards__button').innerHTML = 'More details'
 		}
+	}
+
+	if (e.target.closest('.cards__title__button--delete')) {
+		const index = Array.from(
+			document.querySelectorAll('.cards__title__button--delete')
+		).indexOf(e.target.closest('.cards__title__button--delete'))
+		deleteCards(index)
 	}
 })
