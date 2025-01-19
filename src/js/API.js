@@ -7,7 +7,7 @@ export async function getWeather(input) {
 		params: {
 			key: API,
 			q: input,
-			lang: 'de, ru',
+			lang: 'de',
 		},
 	})
 }

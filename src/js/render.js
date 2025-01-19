@@ -7,20 +7,21 @@ function renderIcon() {
 	})
 }
 
-export function renderCards(data) {
+export function renderCards(data, cityName) {
 	box.innerHTML = ''
 	data.forEach((elem, index) => {
 		box.innerHTML += `
 		<div class="cards__div">
 			<div class="cards__title">
-				<h2 class="cards__current--weather">Weather </h2>
+				<h2 class="cards__current--weather">Weather 
+				<span class="city-name">${cityName}</span> </h2>
 				<button class="cards__title__button--delete" data-index="${index}">
 					<svg class="cards__title__icon"></svg>
 				</button>
 			</div>
 			<div class="content-wrapper">
 				<div class="content-wrapper__left">
-					<img class="cards__condition-icon" src="https:${elem.condition.icon}" alt="Weather icon">
+					<img class="cards__condition-icon" src="${elem.condition.icon}" alt="Weather icon">
 					<div class="content-wrapper__left__text">
 						<div class="temperature">${elem.temp_c}&deg;</div>
 						<div class="cards__condition-text">${elem.condition.text}</div>
@@ -47,7 +48,9 @@ export function renderCards(data) {
 
 				<div class="cards__humidity">Luftfeuchtigkeitsprozentsatz 
 				<span class="cards__humidity__right"> ${elem.humidity} %</span> </div>
+				
 			</div>
+			
 		</div>
 		`
 	})

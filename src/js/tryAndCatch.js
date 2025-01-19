@@ -1,5 +1,4 @@
 import { getWeather } from './API'
-import { renderCards } from './render'
 
 export async function tryAndCatch(inputValue) {
 	try {
