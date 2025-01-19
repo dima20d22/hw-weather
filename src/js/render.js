@@ -39,9 +39,14 @@ export function renderCards(data) {
 			</div>
 			<button type="button" class="cards__button">More details</button>
 			<div class="cards__additionally is-hidden">
-				<div class="cards__precip">Niederschlag in Millimetern: ${elem.precip_mm} mm</div>
-				<div class="cards__cloud">wolkig: ${elem.cloud} %</div>
-				<div class="cards__humidity">Luftfeuchtigkeitsprozentsatz: ${elem.humidity} %</div>
+				<div class="cards__precip">Niederschlag in Millimetern 
+				<span class="cards__precip__right"> ${elem.precip_mm} mm </span> </div>
+
+				<div class="cards__cloud">wolkig 
+				<span class="cards__cloud__right"> ${elem.cloud} %</span> </div>
+
+				<div class="cards__humidity">Luftfeuchtigkeitsprozentsatz 
+				<span class="cards__humidity__right"> ${elem.humidity} %</span> </div>
 			</div>
 		</div>
 		`

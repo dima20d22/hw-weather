@@ -1,5 +1,7 @@
 import { renderCards } from './render'
 
+const box = document.querySelector('.box')
+
 const saveDataToLocalStorage = data => {
 	localStorage.setItem('weatherData', JSON.stringify(data))
 }
@@ -21,6 +23,8 @@ export const deleteCards = index => {
 	weatherCard.splice(index, 1)
 	saveDataToLocalStorage(weatherCard)
 	renderCards(weatherCard)
+
+	box.style.width = '50%'
 }
 
 export const savedWeatherData = loadDataFromLocalStorage()

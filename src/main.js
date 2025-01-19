@@ -10,6 +10,7 @@ import { renderCards } from './js/render.js'
 
 const form = document.querySelector('.header__form')
 const input = document.querySelector('.header__form__input')
+const box = document.querySelector('.box')
 
 document.addEventListener('DOMContentLoaded', () => {
 	renderCards(savedWeatherData)
@@ -39,11 +40,20 @@ document.addEventListener('click', e => {
 		e.preventDefault()
 		const parentCard = e.target.closest('.cards__div')
 		const details = parentCard.querySelector('.cards__additionally')
+		const wrapper = parentCard.querySelector('.content-wrapper')
 		details.classList.toggle('is-hidden')
 		if (document.querySelector('.cards__button').innerHTML === 'More details') {
 			document.querySelector('.cards__button').innerHTML = 'Hide details'
+
+			box.style.width = '100%'
+			box.style.height = 'auto'
+			details.style.width = '25%'
+			wrapper.style.width = '50%'
 		} else {
 			document.querySelector('.cards__button').innerHTML = 'More details'
+			box.style.width = '50%'
+			wrapper.style.width = '50%'
+			details.style.width = '0'
 		}
 	}
 

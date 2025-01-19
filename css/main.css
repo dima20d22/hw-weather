@@ -154,6 +154,9 @@ header {
   padding: 15px;
   list-style-type: none;
 }
+.cards__div:not(:last-child) {
+  margin-bottom: 30px;
+}
 
 .cards__title {
   display: flex;
@@ -184,7 +187,6 @@ header {
 
 .content-wrapper {
   display: flex;
-  width: 100%;
 }
 
 .content-wrapper__left {
@@ -210,7 +212,10 @@ header {
 }
 
 .cards__wind,
-.temperature-feels {
+.temperature-feels,
+.cards__precip,
+.cards__cloud,
+.cards__humidity {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -220,7 +225,10 @@ header {
 }
 
 .cards__wind::before,
-.temperature-feels::before {
+.temperature-feels::before,
+.cards__precip::before,
+.cards__cloud::before,
+.cards__humidity::before {
   content: "";
   border-bottom: 1px solid #ccc;
   flex-grow: 1;
@@ -229,7 +237,10 @@ header {
 }
 
 .cards__wind__right,
-.temperature-feels__right {
+.temperature-feels__right,
+.cards__precip__right,
+.cards__cloud__right,
+.cards__humidity__right {
   order: 3;
 }
 
