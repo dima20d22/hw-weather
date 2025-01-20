@@ -13,7 +13,7 @@ export async function tryAndCatch(inputValue) {
 			return
 		}
 
-		return response.data.current
+		return response.data
 	} catch (error) {
 		console.error(error)
 	}

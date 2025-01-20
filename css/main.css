@@ -10,6 +10,7 @@ body {
   background-color: #e4eaf2;
   margin: 0;
   padding: 0;
+  scrollbar-gutter: stable;
 }
 
 ol,
@@ -264,6 +265,26 @@ header {
 
 .cards__additionally {
   width: 75%;
+}
+
+.weatherChart {
+  width: 940px;
+  height: auto;
+}
+
+#temperature-chart {
+  width: 100%;
+  height: 400px;
+  margin-top: 20px;
+  border: 1px solid;
+}
+
+.content-tab {
+  display: none;
+}
+
+.content-tab.active {
+  display: block;
 }
 
 .is-hidden {

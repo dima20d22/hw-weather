@@ -122,11 +122,26 @@
 	width: 75%;
 }
 
-// .weather__eChart {
-// 	width: 100%;
-// 	height: 400px;
-// }
+.weatherChart {
+	width: 940px;
 
+	height: auto;
+}
+
+#temperature-chart {
+	width: 100%;
+	height: 400px;
+	margin-top: 20px;
+	border: 1px solid;
+}
+//
+.content-tab {
+	display: none;
+}
+.content-tab.active {
+	display: block;
+}
+//
 .is-hidden {
 	display: none;
 }

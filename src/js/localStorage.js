@@ -6,23 +6,22 @@ const saveDataToLocalStorage = data => {
 	localStorage.setItem('weatherData', JSON.stringify(data))
 }
 
-const loadDataFromLocalStorage = () => {
+export const loadDataFromLocalStorage = () => {
 	const data = localStorage.getItem('weatherData')
 	return Array.isArray(JSON.parse(data)) ? JSON.parse(data) : [] //
 }
 
-export const addWeatherCards = weatherData => {
-	const weatherCard = loadDataFromLocalStorage()
-	weatherCard.push(weatherData)
-	saveDataToLocalStorage(weatherCard)
-	renderCards(weatherCard)
+export const addWeatherCards = data => {
+	const localStorageData = loadDataFromLocalStorage()
+	localStorageData.push(data)
+	saveDataToLocalStorage(localStorageData)
 }
 
 export const deleteCards = index => {
-	const weatherCard = loadDataFromLocalStorage()
-	weatherCard.splice(index, 1)
-	saveDataToLocalStorage(weatherCard)
-	renderCards(weatherCard)
+	const localStorageData = loadDataFromLocalStorage()
+	localStorageData.splice(index, 1)
+	saveDataToLocalStorage(localStorageData)
+	renderCards(localStorageData)
 
 	box.style.width = '50%'
 }

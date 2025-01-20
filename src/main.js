@@ -4,6 +4,7 @@ import iziToast from 'izitoast'
 import {
 	addWeatherCards,
 	deleteCards,
+	loadDataFromLocalStorage,
 	savedWeatherData,
 } from './js/localStorage.js'
 import { renderCards } from './js/render.js'
@@ -30,10 +31,10 @@ form.addEventListener('submit', async e => {
 		return
 	}
 
-	const weatherData = await tryAndCatch(inputValue)
-	if (weatherData) {
-		addWeatherCards(weatherData)
-		renderCards(weatherData, inputValue)
+	const data = await tryAndCatch(inputValue)
+	if (data) {
+		addWeatherCards(data)
+		renderCards(loadDataFromLocalStorage())
 		input.value = '' // Очищаем поле ввода
 	}
 })
@@ -44,26 +45,28 @@ document.addEventListener('click', e => {
 
 		const parentCard = e.target.closest('.cards__div')
 		const details = parentCard.querySelector('.cards__additionally')
-		const wrapper = parentCard.querySelector('.content-wrapper')
+
+		const city = parentCard.querySelector('.city-name').textContent.trim()
+
+		updateTemperatureChart(city)
+
+		setTimeout(() => {
+			updateTemperatureChart(city)
+		}, 500)
 
 		const isHidden = details.classList.toggle('is-hidden')
 
 		if (!isHidden) {
-			// Отображаем дополнительные данные
 			e.target.textContent = 'Hide details'
 
-			box.style.width = '100%'
-			box.style.height = 'auto'
+			parentCard.style.width = '960px'
+			parentCard.style.height = 'auto'
 			details.style.width = '25%'
-			wrapper.style.width = '50%'
-
-			// График обновляется только для текущей карточки
 		} else {
-			// Скрываем дополнительные данные
 			e.target.textContent = 'More details'
 
-			box.style.width = '50%'
-			wrapper.style.width = '50%'
+			parentCard.style.width = ''
+
 			details.style.width = '0'
 		}
 	}

@@ -2,56 +2,28 @@ import * as echarts from 'echarts'
 import { getWeather } from './API'
 
 export function updateTemperatureChart(city) {
-	const chartDom = document.getElementById('temperature-chart')
+	const chartDom = document.getElementById(`temperature-chart-${city}`)
+	if (!chartDom) return
 
-	const input = document.querySelector('.header__form__input')
-	const inputValue = input.value.trim()
-
-	if (!chartDom) {
-		console.error('Элемент с id "temperature-chart" не найден.')
-		return
-	}
-
-	chartDom.style.width = '100%'
+	chartDom.style.width = '900px'
 	chartDom.style.height = '400px'
 
 	const myChart = echarts.init(chartDom)
 
-	// Проверяем, передан ли город
-	if (!inputValue || typeof inputValue !== 'string' || inputValue === '') {
-		console.error('Город не указан или указан некорректно:', inputValue)
-		return
-	}
-
-	getWeather(inputValue)
+	getWeather(city)
 		.then(response => {
-			// Проверяем, есть ли в ответе forecast.forecastday
-			if (
-				!response.data ||
-				!response.data.forecast ||
-				!response.data.forecast.forecastday ||
-				!Array.isArray(response.data.forecast.forecastday)
-			) {
-				console.error('Некорректные данные от API. Ответ:', response.data)
-				return
-			}
-
 			const hourlyData = response.data.forecast.forecastday[0].hour
-
-			// Проверяем, есть ли данные для графика
-			if (!hourlyData || hourlyData.length === 0) {
-				console.error('Нет данных для построения графика.')
-				return
-			}
+			const timeData = hourlyData.map(hour => hour.time.split(' ')[1])
+			const temperatureData = hourlyData.map(hour => hour.temp_c) //
 
 			const option = {
 				title: {
-					text: `Температура по часам в ${inputValue}`,
+					text: `Temperature in ${city}`,
 					left: 'center',
 				},
 				xAxis: {
 					type: 'category',
-					data: hourlyData.map(hour => hour.time.split(' ')[1]),
+					data: timeData,
 				},
 				yAxis: {
 					type: 'value',
@@ -64,7 +36,7 @@ export function updateTemperatureChart(city) {
 				},
 				series: [
 					{
-						data: hourlyData.map(hour => hour.temp_c),
+						data: temperatureData,
 						type: 'line',
 						smooth: true,
 						itemStyle: {
