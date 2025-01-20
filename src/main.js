@@ -29,6 +29,9 @@ switchDayTomorrow.addEventListener('click', e => {
 	switchDayTomorrow.style.color = '#007bff'
 	divToday.classList.add('is-hidden')
 	divTomorrow.classList.remove('is-hidden')
+
+	const city = document.querySelector('.city-name').textContent.trim()
+	updateTemperatureChart(city)
 })
 
 switchDayToday.addEventListener('click', e => {
@@ -37,6 +40,9 @@ switchDayToday.addEventListener('click', e => {
 	switchDayTomorrow.style.color = ''
 	divToday.classList.remove('is-hidden')
 	divTomorrow.classList.add('is-hidden')
+
+	const city = document.querySelector('.city-name').textContent.trim()
+	updateTemperatureChart(city)
 })
 
 form.addEventListener('submit', async e => {

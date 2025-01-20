@@ -110,12 +110,15 @@ export function renderCards(data) {
       <div class="cards__additionally is-hidden">
         
         <div class="weatherChart">
-          <div id="temperature-chart-${location.name}" style="width: 100%; height: 400px; margin-top: 20px;"></div>
+          <div id="temperature-chart-${location.name}-tomorrow" style="width: 100%; height: 400px; margin-top: 20px;"></div>
         </div>
       </div>
     </div>
     `
 	})
+
+	window.dispatchEvent(new Event('resize'))
+
 	renderIcon()
 
 	document.querySelectorAll('.cards__title__button--delete').forEach(button => {

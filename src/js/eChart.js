@@ -11,19 +11,28 @@ export function updateTemperatureChart(city) {
 	}
 
 	const chartDom = document.getElementById(`temperature-chart-${city}`)
+	const chartDomTomorrow = document.getElementById(
+		`temperature-chart-${city}-tomorrow`
+	)
 
-	if (!chartDom) {
+	if (!chartDom && !chartDomTomorrow) {
 		console.error('Element with id "temperature-chart" was not found.')
 		return
 	}
 
-	chartDom.style.width = '100%'
 	chartDom.style.height = '400px'
+	chartDomTomorrow.style.height = '400px'
 
 	setTimeout(() => {
-		let myChart = echarts.getInstanceByDom(chartDom)
-		if (!myChart) {
-			myChart = echarts.init(chartDom)
+		let myChartToday = echarts.getInstanceByDom(chartDom)
+		let myChartTomorrow = echarts.getInstanceByDom(chartDomTomorrow)
+
+		if (!myChartToday) {
+			myChartToday = echarts.init(chartDom)
+		}
+
+		if (!myChartTomorrow) {
+			myChartTomorrow = echarts.init(chartDomTomorrow)
 		}
 
 		getWeather(city)
@@ -38,24 +47,38 @@ export function updateTemperatureChart(city) {
 					return
 				}
 
-				const hourlyData = response.data.forecast.forecastday[0].hour
+				const hourlyDataToday = response.data.forecast.forecastday[0].hour
+				const hourlyDataTomorrow = response.data.forecast.forecastday[1].hour
 
-				if (!hourlyData || hourlyData.length === 0) {
-					console.error('There is no data to plot.')
+				if (!hourlyDataToday || hourlyDataToday.length === 0) {
+					console.error('There is no data to plot for today.')
 					return
 				}
 
-				const timeData = hourlyData.map(hour => hour.time.split(' ')[1])
-				const temperatureData = hourlyData.map(hour => hour.temp_c)
+				if (!hourlyDataTomorrow || hourlyDataTomorrow.length === 0) {
+					console.error('There is no data to plot for tomorrow.')
+					return
+				}
 
-				const option = {
+				const timeDataToday = hourlyDataToday.map(
+					hour => hour.time.split(' ')[1]
+				)
+				const timeDataTomorrow = hourlyDataTomorrow.map(
+					hour => hour.time.split(' ')[1]
+				)
+				const temperatureDataToday = hourlyDataToday.map(hour => hour.temp_c)
+				const temperatureDataTomorrow = hourlyDataTomorrow.map(
+					hour => hour.temp_c
+				)
+
+				const optionToday = {
 					title: {
 						text: `Temperature in ${city}`,
 						left: 'center',
 					},
 					xAxis: {
 						type: 'category',
-						data: timeData,
+						data: timeDataToday,
 					},
 					yAxis: {
 						type: 'value',
@@ -68,7 +91,7 @@ export function updateTemperatureChart(city) {
 					},
 					series: [
 						{
-							data: temperatureData,
+							data: temperatureDataToday,
 							type: 'line',
 							smooth: true,
 							itemStyle: {
@@ -78,7 +101,41 @@ export function updateTemperatureChart(city) {
 					],
 				}
 
-				myChart.setOption(option)
+				const optionTomorrow = {
+					title: {
+						text: `Temperature in ${city} (Tomorrow)`,
+						left: 'center',
+					},
+					xAxis: {
+						type: 'category',
+						data: timeDataTomorrow,
+					},
+					yAxis: {
+						type: 'value',
+						axisLabel: {
+							formatter: '{value} °C',
+						},
+					},
+					tooltip: {
+						trigger: 'axis',
+					},
+					series: [
+						{
+							data: temperatureDataTomorrow,
+							type: 'line',
+							smooth: true,
+							itemStyle: {
+								color: '#33b5ff',
+							},
+						},
+					],
+				}
+
+				myChartToday.setOption(optionToday)
+				myChartTomorrow.setOption(optionTomorrow)
+
+				myChartToday.resize()
+				myChartTomorrow.resize()
 			})
 			.catch(error => {
 				console.error('Error loading data for chart:', error)
