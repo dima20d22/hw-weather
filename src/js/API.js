@@ -6,8 +6,7 @@ export async function getWeather(input) {
 	return await axios.get('https://api.weatherapi.com/v1/forecast.json', {
 		params: {
 			key: API,
-			days: 1,
-
+			days: 2,
 			q: input,
 			lang: 'de',
 		},

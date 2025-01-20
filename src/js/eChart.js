@@ -2,7 +2,9 @@ import * as echarts from 'echarts'
 import { getWeather } from './API'
 
 export function updateTemperatureChart(city) {
-	const chartDom = document.getElementById(`temperature-chart-${city}`)
+	const chartContainer = document.getElementById(
+		`temperature-chart-${locationName}-${tab}`
+	)
 	if (!chartDom) return
 
 	chartDom.style.width = '900px'
@@ -17,36 +19,31 @@ export function updateTemperatureChart(city) {
 			const temperatureData = hourlyData.map(hour => hour.temp_c) //
 
 			const option = {
-				title: {
-					text: `Temperature in ${city}`,
-					left: 'center',
-				},
+				title: { text: `Temperature for ${locationName}` },
+				tooltip: {},
 				xAxis: {
 					type: 'category',
-					data: timeData,
+					data: [
+						'12 AM',
+						'3 AM',
+						'6 AM',
+						'9 AM',
+						'12 PM',
+						'3 PM',
+						'6 PM',
+						'9 PM',
+					],
 				},
-				yAxis: {
-					type: 'value',
-					axisLabel: {
-						formatter: '{value} °C',
-					},
-				},
-				tooltip: {
-					trigger: 'axis',
-				},
+				yAxis: { type: 'value' },
 				series: [
 					{
-						data: temperatureData,
+						data: [10, 12, 13, 14, 15, 16, 17, 18],
 						type: 'line',
-						smooth: true,
-						itemStyle: {
-							color: '#ff5733',
-						},
 					},
 				],
 			}
 
-			myChart.setOption(option)
+			chart.setOption(options)
 		})
 		.catch(error => {
 			console.error('Ошибка при загрузке данных для графика:', error)

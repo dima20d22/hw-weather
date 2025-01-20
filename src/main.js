@@ -7,15 +7,19 @@ import {
 	loadDataFromLocalStorage,
 	savedWeatherData,
 } from './js/localStorage.js'
-import { renderCards } from './js/render.js'
+// import { renderCards } from './js/render.js'
 import { updateTemperatureChart } from './js/eChart.js'
+import { updateWeather } from './js/daysWeather.js'
+import { tomorrowContent } from './js/daysWeather.js'
+import { renderWeather } from './js/daysWeather.js'
+import { weatherData } from './js/daysWeather.js'
+import { renderCards } from './js/render.js'
 
 const form = document.querySelector('.header__form')
 const input = document.querySelector('.header__form__input')
-const box = document.querySelector('.box')
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderCards(savedWeatherData)
+	renderCards(loadDataFromLocalStorage())
 })
 
 form.addEventListener('submit', async e => {
@@ -30,16 +34,29 @@ form.addEventListener('submit', async e => {
 		})
 		return
 	}
-
+	await updateWeather(inputValue)
+	if (!tomorrowContent.classList.contains('is-hidden')) {
+		renderWeather('tomorrow', weatherData.tomorrow)
+	} else {
+		renderWeather('today', weatherData.today)
+	}
 	const data = await tryAndCatch(inputValue)
 	if (data) {
 		addWeatherCards(data)
-		renderCards(loadDataFromLocalStorage())
-		input.value = '' // Очищаем поле ввода
+		input.value = ''
 	}
 })
 
 document.addEventListener('click', e => {
+	// Удаление карточки
+	if (e.target.classList.contains('cards__title__button--delete')) {
+		const index = Array.from(
+			document.querySelectorAll('.cards__title__button--delete')
+		).indexOf(e.target.closest('.cards__title__button--delete'))
+		deleteCards(index)
+	}
+
+	// Открытие/закрытие подробностей карточки
 	if (e.target.classList.contains('cards__button')) {
 		e.preventDefault()
 
@@ -48,33 +65,21 @@ document.addEventListener('click', e => {
 
 		const city = parentCard.querySelector('.city-name').textContent.trim()
 
+		// Обновление диаграммы
 		updateTemperatureChart(city)
 
-		setTimeout(() => {
-			updateTemperatureChart(city)
-		}, 500)
-
+		// Тоглинг деталей
 		const isHidden = details.classList.toggle('is-hidden')
 
 		if (!isHidden) {
 			e.target.textContent = 'Hide details'
-
 			parentCard.style.width = '960px'
 			parentCard.style.height = 'auto'
 			details.style.width = '25%'
 		} else {
 			e.target.textContent = 'More details'
-
 			parentCard.style.width = ''
-
 			details.style.width = '0'
 		}
-	}
-
-	if (e.target.closest('.cards__title__button--delete')) {
-		const index = Array.from(
-			document.querySelectorAll('.cards__title__button--delete')
-		).indexOf(e.target.closest('.cards__title__button--delete'))
-		deleteCards(index)
 	}
 })

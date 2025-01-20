@@ -1,4 +1,4 @@
-.box {
+.content-tab {
 	width: 50%;
 }
 .cards__div {
@@ -135,11 +135,20 @@
 	border: 1px solid;
 }
 //
-.content-tab {
-	display: none;
-}
+
 .content-tab.active {
 	display: block;
+}
+
+.right {
+	width: 50%;
+	float: right;
+	box-sizing: border-box;
+}
+
+.cards__div.tomorrow {
+	margin-left: auto; /* Отталкивает элемент от левой части контейнера */
+	margin-right: 0;
 }
 //
 .is-hidden {

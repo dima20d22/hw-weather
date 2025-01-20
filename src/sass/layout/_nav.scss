@@ -10,9 +10,22 @@
 	list-style-type: none;
 }
 
+.nav__link {
+	text-decoration: none;
+	transition: background-color 0.3s, color 0.3s;
+
+	&:active {
+		color: #007bff;
+	}
+}
+
 .nav__item {
 	&:hover {
 		transform: scale(1.05);
+		color: #007bff;
+	}
+
+	&:active {
 		color: #007bff;
 	}
 }
