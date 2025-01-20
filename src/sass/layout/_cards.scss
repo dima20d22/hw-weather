@@ -1,6 +1,5 @@
-/* Основной контейнер для карточек */
-.box {
-	width: 50%;
+.cards__today,
+.cards__tomorrow {
 	padding: 20px;
 }
 
@@ -37,7 +36,7 @@
 	cursor: pointer;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+
 	transition: transform 0.3s, color 0.3s;
 }
 
@@ -56,13 +55,12 @@
 .content-wrapper {
 	display: flex;
 	margin-bottom: 20px;
-	justify-content: space-between;
+	justify-content: space-around;
 }
 
 .content-wrapper__left {
 	display: flex;
 	align-items: center;
-	flex: 0 0 50%;
 }
 
 .cards__condition-icon {
@@ -86,13 +84,6 @@
 	font-size: 14px;
 	color: #666;
 	margin-top: 5px;
-}
-
-.content-wrapper__right {
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: flex-end;
 }
 
 .cards__wind,

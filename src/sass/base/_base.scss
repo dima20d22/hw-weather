@@ -6,16 +6,36 @@
 	box-sizing: border-box;
 }
 
-// html,
-// body {
-// 	height: 200%;
-// }
-
 body {
 	background-color: #e4eaf2;
 	margin: 0;
 	padding: 0;
-	scrollbar-gutter: stable;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	// scrollbar-gutter: stable;
+
+	&::-webkit-scrollbar {
+		width: 0.4rem;
+		&-thumb {
+			background-color: transparent;
+			border-radius: 4px;
+		}
+	}
+	&::-moz-scrollbar {
+		width: 0.4rem;
+		&-thumb {
+			background-color: transparent;
+			border-radius: 4px;
+		}
+	}
+}
+.overflow-auto:hover {
+	&::-webkit-scrollbar-thumb {
+		background-color: #ccc;
+	}
+	&::-moz-scrollbar-thumb {
+		background-color: #ccc;
+	}
 }
 
 ol,

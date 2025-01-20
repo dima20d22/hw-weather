@@ -5,7 +5,7 @@
 
 .container--header {
 	display: flex;
-	align-items: flex-end;
+	justify-content: space-between;
 	padding: 20px 20px;
 	margin-bottom: 0;
 }
@@ -13,3 +13,7 @@
 .container--nav {
 	padding: 10px 20px;
 }
+
+// .container--content {
+// 	display: flex;
+// }

@@ -12,9 +12,31 @@ import { updateTemperatureChart } from './js/eChart.js'
 
 const form = document.querySelector('.header__form')
 const input = document.querySelector('.header__form__input')
+const switchDayTomorrow = document.getElementById('linkTomorrow')
+const switchDayToday = document.getElementById('linkToday')
+const divToday = document.querySelector('.cards__today')
+const divTomorrow = document.querySelector('.cards__tomorrow ')
 
 document.addEventListener('DOMContentLoaded', () => {
 	renderCards(savedWeatherData())
+	divToday.classList.remove('is-hidden')
+	switchDayToday.style.color = '#007bff'
+})
+
+switchDayTomorrow.addEventListener('click', e => {
+	e.preventDefault()
+	switchDayToday.style.color = ''
+	switchDayTomorrow.style.color = '#007bff'
+	divToday.classList.add('is-hidden')
+	divTomorrow.classList.remove('is-hidden')
+})
+
+switchDayToday.addEventListener('click', e => {
+	e.preventDefault()
+	switchDayToday.style.color = '#007bff'
+	switchDayTomorrow.style.color = ''
+	divToday.classList.remove('is-hidden')
+	divTomorrow.classList.add('is-hidden')
 })
 
 form.addEventListener('submit', async e => {
@@ -68,12 +90,9 @@ document.addEventListener('click', e => {
 		if (!isHidden) {
 			e.target.textContent = 'Hide details'
 
-			parentCard.style.width = '960px'
 			parentCard.style.height = 'auto'
 		} else {
 			e.target.textContent = 'More details'
-
-			parentCard.style.width = ''
 		}
 	}
 

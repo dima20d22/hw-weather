@@ -1,6 +1,9 @@
 header {
 	background-color: #1f1f1f;
 }
+.logo-wrapper {
+	display: flex;
+}
 
 .header__svg-wrapper {
 	width: 40px;
@@ -38,11 +41,13 @@ header {
 .header__form {
 	display: flex;
 	box-sizing: border-box;
+	margin-left: auto;
 }
 
 .header__form__input-wrapper {
 	display: block;
 	position: relative;
+	margin-right: 30px;
 }
 
 .header__form__input {
@@ -74,8 +79,18 @@ header {
 }
 
 .header__form__btn-submit {
+	background-color: #ff5733;
+	border: none;
+	color: white;
+
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 25px;
 	cursor: pointer;
+	transition: all 0.3s ease;
+
 	text-align: center;
+	width: 100px;
 	&:hover {
 		transform: scale(1.05);
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
