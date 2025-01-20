@@ -7,7 +7,7 @@ function renderIcon() {
 	})
 }
 
-export function renderCards(data, cityName) {
+export function renderCards(data) {
 	box.innerHTML = ''
 
 	data.forEach(({ current: elem, location }, index) => {

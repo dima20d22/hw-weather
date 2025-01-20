@@ -65,20 +65,15 @@ document.addEventListener('click', e => {
 
 		const isHidden = details.classList.toggle('is-hidden')
 
-		updateTemperatureChart(city)
-
 		if (!isHidden) {
 			e.target.textContent = 'Hide details'
 
 			parentCard.style.width = '960px'
 			parentCard.style.height = 'auto'
-			details.style.width = '25%'
 		} else {
 			e.target.textContent = 'More details'
 
 			parentCard.style.width = ''
-
-			details.style.width = '0'
 		}
 	}
 

@@ -148,31 +148,25 @@ header {
 /* Основной контейнер для карточек */
 .box {
   width: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 20px;
 }
 
-/* Стиль для самих карточек */
 .cards__div {
   background-color: #fff;
-  border: 1px solid #ddd; /* Легкая рамка вокруг карточки */
-  border-radius: 12px; /* Закругленные углы */
+  border: 1px solid #ddd;
+  border-radius: 12px;
   padding: 20px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для выделения */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  max-width: 100%; /* Не даем карточке выходить за пределы контейнера */
-  margin-bottom: 20px; /* Отступ между карточками */
-  overflow: hidden; /* Чтобы элементы внутри не выходили за пределы карточки */
+  margin-bottom: 20px;
+  overflow: hidden;
 }
 
 .cards__div:hover {
-  transform: translateY(-5px); /* Легкое поднятие карточки при наведении */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Более интенсивная тень */
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Заголовок карточки */
 .cards__title {
   display: flex;
   justify-content: space-between;
@@ -202,17 +196,15 @@ header {
 
 .cards__title__button--delete:hover .cards__title__icon {
   transform: scale(1.3);
-  fill: #ff0000; /* Ярко-красный при наведении */
+  fill: #ff0000;
 }
 
-/* Основной блок с контентом карточки */
 .content-wrapper {
   display: flex;
   margin-bottom: 20px;
   justify-content: space-between;
 }
 
-/* Левая часть карточки (иконка погоды и температура) */
 .content-wrapper__left {
   display: flex;
   align-items: center;
@@ -233,7 +225,7 @@ header {
 .temperature {
   font-size: 24px;
   font-weight: bold;
-  color: #ff5733; /* Яркий цвет для температуры */
+  color: #ff5733;
 }
 
 .cards__condition-text {
@@ -242,7 +234,6 @@ header {
   margin-top: 5px;
 }
 
-/* Правая часть карточки (информация о ветре, влажности и т.д.) */
 .content-wrapper__right {
   display: flex;
   flex-direction: column;
@@ -283,7 +274,6 @@ header {
   order: 3;
 }
 
-/* Кнопка для подробностей */
 .cards__button {
   background-color: #ff5733;
   border: none;
@@ -296,11 +286,11 @@ header {
   transition: all 0.3s ease;
   margin-top: 20px;
   text-align: center;
-  width: 100%;
+  width: 200px;
 }
 
 .cards__button:hover {
-  background-color: #ff2a00; /* Изменяем цвет при наведении */
+  background-color: #ff2a00;
   transform: scale(1.05);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
@@ -309,9 +299,7 @@ header {
   background-color: #e60000;
 }
 
-/* Дополнительные сведения */
 .cards__additionally {
-  width: 100%;
   padding-top: 10px;
   display: flex;
   flex-direction: column;
@@ -326,7 +314,6 @@ header {
   margin-top: 20px;
 }
 
-/* Скрытые элементы */
 .is-hidden {
   display: none;
 }
