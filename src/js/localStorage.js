@@ -8,13 +8,14 @@ const saveDataToLocalStorage = data => {
 
 export const loadDataFromLocalStorage = () => {
 	const data = localStorage.getItem('weatherData')
-	return Array.isArray(JSON.parse(data)) ? JSON.parse(data) : [] //
+	return Array.isArray(JSON.parse(data)) ? JSON.parse(data) : []
 }
 
-export const addWeatherCards = data => {
+export const addWeatherCards = weatherData => {
 	const localStorageData = loadDataFromLocalStorage()
-	localStorageData.push(data)
+	localStorageData.push(weatherData)
 	saveDataToLocalStorage(localStorageData)
+	renderCards(localStorageData)
 }
 
 export const deleteCards = index => {
@@ -26,4 +27,4 @@ export const deleteCards = index => {
 	box.style.width = '50%'
 }
 
-export const savedWeatherData = loadDataFromLocalStorage()
+export const savedWeatherData = loadDataFromLocalStorage

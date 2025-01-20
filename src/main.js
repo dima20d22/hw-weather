@@ -1,6 +1,6 @@
+import iziToast from 'izitoast'
 import 'izitoast/dist/css/iziToast.min.css'
 import { tryAndCatch } from './js/tryAndCatch.js'
-import iziToast from 'izitoast'
 import {
 	addWeatherCards,
 	deleteCards,
@@ -12,10 +12,9 @@ import { updateTemperatureChart } from './js/eChart.js'
 
 const form = document.querySelector('.header__form')
 const input = document.querySelector('.header__form__input')
-const box = document.querySelector('.box')
 
 document.addEventListener('DOMContentLoaded', () => {
-	renderCards(savedWeatherData)
+	renderCards(savedWeatherData())
 })
 
 form.addEventListener('submit', async e => {
@@ -31,11 +30,25 @@ form.addEventListener('submit', async e => {
 		return
 	}
 
+	const cityExists = savedWeatherData().some(
+		city => city.location.name.toLowerCase() === inputValue.toLowerCase()
+	)
+
+	if (cityExists) {
+		iziToast.warning({
+			title: 'Warning',
+			message: `City "${inputValue}" already exists.`,
+			position: 'topRight',
+		})
+		input.value = ''
+		return
+	}
+
 	const data = await tryAndCatch(inputValue)
 	if (data) {
 		addWeatherCards(data)
 		renderCards(loadDataFromLocalStorage())
-		input.value = '' // Очищаем поле ввода
+		input.value = ''
 	}
 })
 
@@ -50,11 +63,9 @@ document.addEventListener('click', e => {
 
 		updateTemperatureChart(city)
 
-		setTimeout(() => {
-			updateTemperatureChart(city)
-		}, 500)
-
 		const isHidden = details.classList.toggle('is-hidden')
+
+		updateTemperatureChart(city)
 
 		if (!isHidden) {
 			e.target.textContent = 'Hide details'
@@ -72,9 +83,11 @@ document.addEventListener('click', e => {
 	}
 
 	if (e.target.closest('.cards__title__button--delete')) {
-		const index = Array.from(
-			document.querySelectorAll('.cards__title__button--delete')
-		).indexOf(e.target.closest('.cards__title__button--delete'))
+		const parentCard = e.target.closest('.cards__div')
+		const cityId = parentCard.dataset.cityId
+		const index = loadDataFromLocalStorage().findIndex(
+			item => item.id === cityId
+		)
 		deleteCards(index)
 	}
 })

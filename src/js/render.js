@@ -1,4 +1,4 @@
-export const box = document.querySelector('.content-tab')
+export const box = document.querySelector('.box')
 
 function renderIcon() {
 	const icons = document.querySelectorAll('.cards__title__icon')
@@ -7,7 +7,7 @@ function renderIcon() {
 	})
 }
 
-export function renderCards(data) {
+export function renderCards(data, cityName) {
 	box.innerHTML = ''
 
 	data.forEach(({ current: elem, location }, index) => {
@@ -46,18 +46,12 @@ export function renderCards(data) {
 
 <div class="cards__cloud">wolkig 
 <span class="cards__cloud__right"> ${elem.cloud} %</span> </div>
-
 <div class="cards__humidity">Luftfeuchtigkeitsprozentsatz 
 <span class="cards__humidity__right"> ${elem.humidity} %</span> </div>
 <div class="weatherChart">
-
 <div id="temperature-chart-${location.name}" style="width: 100%; height: 400px; margin-top: 20px;"></div>
-
-
 </div>
-
 </div>
-
 </div>
 `
 	})

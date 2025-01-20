@@ -1,22 +1,39 @@
+/* Основной контейнер для карточек */
 .box {
 	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	padding: 20px;
 }
+
+/* Стиль для самих карточек */
 .cards__div {
-	background-color: white;
-	border: 2px solid none;
-	border-radius: 10px;
-	padding: 15px;
-	list-style-type: none;
-
-	&:not(:last-child) {
-		margin-bottom: 30px;
-	}
+	background-color: #fff;
+	border: 1px solid #ddd; /* Легкая рамка вокруг карточки */
+	border-radius: 12px; /* Закругленные углы */
+	padding: 20px;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень для выделения */
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	max-width: 100%; /* Не даем карточке выходить за пределы контейнера */
+	margin-bottom: 20px; /* Отступ между карточками */
+	overflow: hidden; /* Чтобы элементы внутри не выходили за пределы карточки */
 }
 
+.cards__div:hover {
+	transform: translateY(-5px); /* Легкое поднятие карточки при наведении */
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2); /* Более интенсивная тень */
+}
+
+/* Заголовок карточки */
 .cards__title {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	font-family: 'Raleway', sans-serif;
+	font-weight: bold;
+	margin-bottom: 15px;
+	color: #333;
 }
 
 .cards__title__button--delete {
@@ -30,29 +47,35 @@
 }
 
 .cards__title__icon {
-	width: 12px;
-	height: 12px;
+	width: 16px;
+	height: 16px;
 	transition: transform 0.3s, color 0.3s;
-	fill: red;
+	fill: #ff3b30;
 }
 
 .cards__title__button--delete:hover .cards__title__icon {
-	transform: scale(1.2);
+	transform: scale(1.3);
+	fill: #ff0000; /* Ярко-красный при наведении */
 }
 
+/* Основной блок с контентом карточки */
 .content-wrapper {
 	display: flex;
+	margin-bottom: 20px;
+	justify-content: space-between;
 }
 
+/* Левая часть карточки (иконка погоды и температура) */
 .content-wrapper__left {
 	display: flex;
-	justify-content: flex-start;
 	align-items: center;
 	flex: 0 0 50%;
 }
 
 .cards__condition-icon {
-	width: 80px;
+	width: 60px;
+	height: 60px;
+	margin-right: 15px;
 }
 
 .content-wrapper__left__text {
@@ -60,10 +83,24 @@
 	flex-direction: column;
 }
 
+.temperature {
+	font-size: 24px;
+	font-weight: bold;
+	color: #ff5733; /* Яркий цвет для температуры */
+}
+
+.cards__condition-text {
+	font-size: 14px;
+	color: #666;
+	margin-top: 5px;
+}
+
+/* Правая часть карточки (информация о ветре, влажности и т.д.) */
 .content-wrapper__right {
 	display: flex;
-	align-items: center;
-	width: 100%;
+	flex-direction: column;
+	justify-content: center;
+	align-items: flex-end;
 }
 
 .cards__wind,
@@ -73,10 +110,10 @@
 .cards__humidity {
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
-	align-items: baseline;
-	display: flex;
-	margin-bottom: 0.5em;
+	align-items: center;
+	font-size: 14px;
+	color: #555;
+	margin-bottom: 10px;
 }
 
 .cards__wind::before,
@@ -88,7 +125,7 @@
 	border-bottom: 1px solid #ccc;
 	flex-grow: 1;
 	order: 2;
-	margin: 0 3px;
+	margin: 0 5px;
 }
 
 .cards__wind__right,
@@ -99,49 +136,50 @@
 	order: 3;
 }
 
+/* Кнопка для подробностей */
 .cards__button {
-	margin: 0;
-	padding: 5px;
-	outline: none;
-	border: 2px solid var(--main-color);
-	border-radius: 10px;
-	transition: all 0.3s ease;
+	background-color: #ff5733;
+	border: none;
+	color: white;
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: bold;
+	border-radius: 25px;
 	cursor: pointer;
+	transition: all 0.3s ease;
+	margin-top: 20px;
 	text-align: center;
-	&:hover {
-		transform: scale(1.05);
-		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-	}
-
-	&:active {
-		background-color: var(--secondary-color);
-	}
+	width: 100%;
 }
 
+.cards__button:hover {
+	background-color: #ff2a00; /* Изменяем цвет при наведении */
+	transform: scale(1.05);
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cards__button:active {
+	background-color: #e60000;
+}
+
+/* Дополнительные сведения */
 .cards__additionally {
-	width: 75%;
+	width: 100%;
+	padding-top: 10px;
+	display: flex;
+	flex-direction: column;
+	background-color: #f9f9f9;
+	border-radius: 10px;
+	margin-top: 20px;
 }
 
 .weatherChart {
-	width: 940px;
-
-	height: auto;
-}
-
-#temperature-chart {
 	width: 100%;
 	height: 400px;
 	margin-top: 20px;
-	border: 1px solid;
 }
-//
-.content-tab {
-	display: none;
-}
-.content-tab.active {
-	display: block;
-}
-//
+
+/* Скрытые элементы */
 .is-hidden {
 	display: none;
 }
