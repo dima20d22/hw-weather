@@ -58,9 +58,10 @@ header {
 	padding: 5px 5px 5px 25px;
 	outline: none;
 	border: 2px solid var(--main-color);
-	border-radius: 10px;
+	border-radius: 24px;
+
 	transition: all 0.3s ease;
-	width: 100%;
+	padding: 8px 20px;
 }
 
 .form__input-icon {
@@ -78,10 +79,10 @@ header {
 	color: white;
 	font-size: 14px;
 	font-weight: bold;
-	border-radius: 25px;
+	border-radius: 24px;
 	cursor: pointer;
 	transition: all 0.3s ease;
-	width: 100px;
+	padding: 8px 12px;
 	text-align: center;
 
 	&:hover {
@@ -116,13 +117,13 @@ header {
 		width: 200px;
 	}
 
-	.header__form__input {
-		width: 220px;
-	}
+	// .header__form__input {
+	// 	width: 220px;
+	// }
 
-	.header__form__btn-submit {
-		width: 180px;
-	}
+	// .header__form__btn-submit {
+	// 	width: 180px;
+	// }
 }
 
 @media (min-width: 1024px) {
@@ -143,11 +144,11 @@ header {
 	}
 
 	.header__form__input {
-		width: 280px;
+		padding: 8px 28px;
 	}
 
 	.header__form__btn-submit {
-		width: 200px;
+		padding: 8px 20px;
 	}
 }
 
