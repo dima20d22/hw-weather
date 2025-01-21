@@ -1,3 +1,5 @@
+// import { deleteCards } from './localStorage'
+
 export const today = document.querySelector('.cards__today')
 export const tomorrow = document.querySelector('.cards__tomorrow')
 
@@ -117,14 +119,12 @@ export function renderCards(data) {
     `
 	})
 
-	window.dispatchEvent(new Event('resize'))
-
 	renderIcon()
 
-	document.querySelectorAll('.cards__title__button--delete').forEach(button => {
-		button.addEventListener('click', event => {
-			const index = event.target.getAttribute('data-index')
-			deleteCards(index)
-		})
-	})
+	// document.querySelectorAll('.cards__title__button--delete').forEach(button => {
+	// 	button.addEventListener('click', event => {
+	// 		const index = event.target.getAttribute('data-index')
+	// 		deleteCards(index)
+	// 	})
+	// })
 }

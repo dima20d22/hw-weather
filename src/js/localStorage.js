@@ -23,8 +23,6 @@ export const deleteCards = index => {
 	localStorageData.splice(index, 1)
 	saveDataToLocalStorage(localStorageData)
 	renderCards(localStorageData)
-
-	box.style.width = '50%'
 }
 
 export const savedWeatherData = loadDataFromLocalStorage

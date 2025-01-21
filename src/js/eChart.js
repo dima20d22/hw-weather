@@ -2,23 +2,10 @@ import * as echarts from 'echarts'
 import { getWeather } from './API'
 
 export function updateTemperatureChart(city) {
-	if (!city || typeof city !== 'string' || city === '') {
-		console.error(
-			'The city is not specified or is specified incorrectly:',
-			city
-		)
-		return
-	}
-
 	const chartDom = document.getElementById(`temperature-chart-${city}`)
 	const chartDomTomorrow = document.getElementById(
 		`temperature-chart-${city}-tomorrow`
 	)
-
-	if (!chartDom && !chartDomTomorrow) {
-		console.error('Element with id "temperature-chart" was not found.')
-		return
-	}
 
 	chartDom.style.height = '400px'
 	chartDomTomorrow.style.height = '400px'
@@ -37,28 +24,8 @@ export function updateTemperatureChart(city) {
 
 		getWeather(city)
 			.then(response => {
-				if (
-					!response.data ||
-					!response.data.forecast ||
-					!response.data.forecast.forecastday ||
-					!Array.isArray(response.data.forecast.forecastday)
-				) {
-					console.error('Incorrect data from API. Answer:', response.data)
-					return
-				}
-
 				const hourlyDataToday = response.data.forecast.forecastday[0].hour
 				const hourlyDataTomorrow = response.data.forecast.forecastday[1].hour
-
-				if (!hourlyDataToday || hourlyDataToday.length === 0) {
-					console.error('There is no data to plot for today.')
-					return
-				}
-
-				if (!hourlyDataTomorrow || hourlyDataTomorrow.length === 0) {
-					console.error('There is no data to plot for tomorrow.')
-					return
-				}
 
 				const timeDataToday = hourlyDataToday.map(
 					hour => hour.time.split(' ')[1]

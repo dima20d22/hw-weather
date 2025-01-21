@@ -1,8 +1,11 @@
 header {
 	background-color: #1f1f1f;
 }
+
 .logo-wrapper {
 	display: flex;
+	align-items: center;
+	margin-bottom: 20px;
 }
 
 .header__svg-wrapper {
@@ -16,16 +19,15 @@ header {
 }
 
 .header__logo {
-	font-family: --main-font;
-	font-size: 40px;
-	color: white;
+	font-size: 28px;
+	color: white; //////////
+	line-height: 1;
 	margin: 0;
 	padding: 0;
-	line-height: 1;
 }
 
 .header__city {
-	font-size: 28px;
+	font-size: 20px;
 	color: white;
 	margin: 0;
 	padding: 0;
@@ -33,70 +35,221 @@ header {
 
 .header__form-wrapper {
 	display: flex;
-	flex-direction: column;
-	align-items: center;
 	justify-content: center;
+	align-items: center;
+	width: 100%;
 }
 
 .header__form {
 	display: flex;
+	flex-grow: 1;
 	box-sizing: border-box;
-	margin-left: auto;
 }
 
 .header__form__input-wrapper {
 	display: block;
 	position: relative;
-	margin-right: 30px;
+	width: 100%;
 }
 
 .header__form__input {
 	padding-left: 16px;
 	font-size: 16px;
-	margin: 0;
 	padding: 5px 5px 5px 25px;
 	outline: none;
 	border: 2px solid var(--main-color);
 	border-radius: 10px;
 	transition: all 0.3s ease;
+	width: 100%;
 }
+
 .form__input-icon {
+	position: absolute;
 	left: 8px;
 	top: 50%;
 	transform: translateY(-50%);
-	position: absolute;
 	width: 14px;
 	height: 14px;
-}
-
-.header__form__btn-submit {
-	margin: 0;
-	padding: 5px;
-	outline: none;
-	border: 2px solid var(--main-color);
-	border-radius: 10px;
-	transition: all 0.3s ease;
 }
 
 .header__form__btn-submit {
 	background-color: #ff5733;
 	border: none;
 	color: white;
-
 	font-size: 14px;
 	font-weight: bold;
 	border-radius: 25px;
 	cursor: pointer;
 	transition: all 0.3s ease;
-
-	text-align: center;
 	width: 100px;
+	text-align: center;
+
 	&:hover {
 		transform: scale(1.05);
 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
 	}
 
 	&:active {
-		background-color: #333;
+		background-color: #e60000;
 	}
 }
+
+@media (min-width: 768px) {
+	.header__logo {
+		font-size: 32px;
+	}
+
+	.logo-wrapper {
+		margin: 0;
+	}
+
+	.header__city {
+		font-size: 24px;
+	}
+
+	.header__form-wrapper {
+		width: auto;
+		justify-content: flex-start;
+	}
+
+	.header__form__input-wrapper {
+		width: 200px;
+	}
+
+	.header__form__input {
+		width: 220px;
+	}
+
+	.header__form__btn-submit {
+		width: 180px;
+	}
+}
+
+@media (min-width: 1024px) {
+	.header__logo {
+		font-size: 36px;
+	}
+
+	.header__city {
+		font-size: 28px;
+	}
+
+	.header__form-wrapper {
+		justify-content: flex-end;
+	}
+
+	.header__form__input-wrapper {
+		width: 300px;
+	}
+
+	.header__form__input {
+		width: 280px;
+	}
+
+	.header__form__btn-submit {
+		width: 200px;
+	}
+}
+
+// header {
+// 	background-color: #1f1f1f;
+// }
+// .logo-wrapper {
+// 	display: flex;
+// }
+
+// .header__svg-wrapper {
+// 	width: 40px;
+// 	height: 40px;
+// }
+
+// .header__logo-icon {
+// 	width: 40px;
+// 	height: 40px;
+// }
+
+// .header__logo {
+// 	font-family: --main-font;
+// 	font-size: 40px;
+// 	color: white;
+// 	margin: 0;
+// 	padding: 0;
+// 	line-height: 1;
+// }
+
+// .header__city {
+// 	font-size: 28px;
+// 	color: white;
+// 	margin: 0;
+// 	padding: 0;
+// }
+
+// .header__form-wrapper {
+// 	display: flex;
+// 	flex-direction: column;
+// 	align-items: center;
+// 	justify-content: center;
+// }
+
+// .header__form {
+// 	display: flex;
+// 	box-sizing: border-box;
+// 	margin-left: auto;
+// }
+
+// .header__form__input-wrapper {
+// 	display: block;
+// 	position: relative;
+// 	margin-right: 30px;
+// }
+
+// .header__form__input {
+// 	padding-left: 16px;
+// 	font-size: 16px;
+// 	margin: 0;
+// 	padding: 5px 5px 5px 25px;
+// 	outline: none;
+// 	border: 2px solid var(--main-color);
+// 	border-radius: 10px;
+// 	transition: all 0.3s ease;
+// }
+// .form__input-icon {
+// 	left: 8px;
+// 	top: 50%;
+// 	transform: translateY(-50%);
+// 	position: absolute;
+// 	width: 14px;
+// 	height: 14px;
+// }
+
+// .header__form__btn-submit {
+// 	margin: 0;
+// 	padding: 5px;
+// 	outline: none;
+// 	border: 2px solid var(--main-color);
+// 	border-radius: 10px;
+// 	transition: all 0.3s ease;
+// }
+
+// .header__form__btn-submit {
+// 	background-color: #ff5733;
+// 	border: none;
+// 	color: white;
+
+// 	font-size: 14px;
+// 	font-weight: bold;
+// 	border-radius: 25px;
+// 	cursor: pointer;
+// 	transition: all 0.3s ease;
+
+// 	text-align: center;
+// 	width: 100px;
+// 	&:hover {
+// 		transform: scale(1.05);
+// 		box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+// 	}
+
+// 	&:active {
+// 		background-color: #333;
+// 	}
+// }
