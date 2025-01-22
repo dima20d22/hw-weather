@@ -167,9 +167,6 @@ header {
     width: auto;
     justify-content: flex-start;
   }
-  .header__form__input-wrapper {
-    width: 200px;
-  }
 }
 @media (min-width: 1024px) {
   .header__logo {
