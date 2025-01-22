@@ -4,7 +4,7 @@ export const tomorrow = document.querySelector('.cards__tomorrow')
 function renderIcon() {
 	const icons = document.querySelectorAll('.cards__title__icon')
 	icons.forEach(icon => {
-		icon.innerHTML = `<use href="./src/sprite.svg/logos.svg#trash-basket--svg"></use>`
+		icon.innerHTML = `<use href="./src/sprite/logos.svg#trash-basket--svg"></use>`
 	})
 }
 
