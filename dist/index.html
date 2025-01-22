@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&family=Raleway:ital@0;1&display=swap"
+			rel="stylesheet"
+		/>
+		<title>Weather</title>
+		<script type="module" crossorigin src="/assets/index-BQupioOu.js"></script>
+		<link rel="stylesheet" crossorigin href="/assets/index-DQm_l2kf.css">
+	</head>
+	<body>
+		<header сlass="header">
+			<div class="container container--header">
+				<div class="logo-wrapper">
+					<div id="svg-container" class="header__svg-wrapper">
+						<svg class="header__logo-icon">
+							<use href="/assets/logos-BOo6u2aC.svg#moon--svg"></use>
+						</svg>
+					</div>
+					<h1 class="header__logo">Weather</h1>
+				</div>
+
+				<div class="header__form-wrapper">
+					<form class="header__form">
+						<span class="header__form__input-wrapper">
+							<input
+								class="header__form__input"
+								type="text"
+								placeholder="Text your City"
+							/>
+							<svg class="form__input-icon">
+								<use href="/assets/logos-BOo6u2aC.svg#zoom--svg"></use>
+							</svg>
+						</span>
+
+						<button class="header__form__btn-submit" type="submit">
+							Search
+						</button>
+					</form>
+				</div>
+			</div>
+		</header>
+		<main>
+			<div class="container container--nav">
+				<nav class="nav">
+					<ul class="nav__list">
+						<li class="nav__item">
+							<a id="linkToday" class="nav__link" href="#">Today</a>
+						</li>
+						<li class="nav__item">
+							<a id="linkTomorrow" class="nav__link" href="#">Tomorrow</a>
+						</li>
+					</ul>
+				</nav>
+			</div>
+			<section class="content">
+				<div class="container container--content">
+					<div class="cards__today is-hidden"></div>
+					<div class="cards__tomorrow is-hidden"></div>
+				</div>
+			</section>
+		</main>
+
+	</body>
+</html>
