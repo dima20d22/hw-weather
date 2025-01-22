@@ -116,14 +116,12 @@ header {
 }
 
 .header__form__input {
-  padding-left: 16px;
   font-size: 16px;
-  padding: 5px 5px 5px 25px;
+  padding: 8px 8px 8px 25px;
   outline: none;
   border: 2px solid var(--main-color);
   border-radius: 24px;
   transition: all 0.3s ease;
-  padding: 8px 20px;
 }
 
 .form__input-icon {
